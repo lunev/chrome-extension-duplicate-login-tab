@@ -4,7 +4,7 @@
 1. Download the application and extract the [zip file](https://github.com/lunev/chrome-extension-duplicate-tab/archive/master.zip).   
 1. Go to **_chrome://extensions_**
 2. Check **_Developer mode_**
-3. Click on **_Load unpacked extensione_** button
+3. Click on **_Load unpacked extension_** button
 4. Choose the extracted folder
 
 Then you'll have the duplicate icon on your chrome bar.

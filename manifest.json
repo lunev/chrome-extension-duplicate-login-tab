@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "lun tab duplicator",
+  "description": "Duplicate extension with an extra url option",
+  "version": "0.1",
+  "browser_action": {
+  	"default_icon": "icon.png"
+  },
+  "permissions": [
+  	"activeTab"
+  ],
+  "content_scripts": [
+	  {
+	    "matches": [
+	      "<all_urls>"
+	    ],
+	    "js": ["duplicator.js"],
+	    "css": ["duplicator.css"]
+	  }
+  ],
+  "background": {
+	  "scripts": ["background.js"]
+	}
+}

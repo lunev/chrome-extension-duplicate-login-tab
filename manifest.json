@@ -1,24 +1,21 @@
 {
   "manifest_version": 2,
-  "name": "lun tab duplicator",
+  "name": "The duplicator",
   "description": "Duplicate extension with an extra url option",
-  "version": "0.1",
+  "version": "0.2",
   "browser_action": {
-  	"default_icon": "icon.png"
+  	"default_icon": "copy.png",
+    "default_popup": "popup.html",
+    "default_title": ""
   },
+  "icons": {
+      "128": "copy.png",
+      "16": "copy.png",
+      "48": "copy.png"
+   },
   "permissions": [
-  	"activeTab"
-  ],
-  "content_scripts": [
-	  {
-	    "matches": [
-	      "<all_urls>"
-	    ],
-	    "js": ["duplicator.js"],
-	    "css": ["duplicator.css"]
-	  }
-  ],
-  "background": {
-	  "scripts": ["background.js"]
-	}
+  	"activeTab",
+    "storage",
+    "tabs"
+  ]
 }

@@ -12,6 +12,8 @@ The extension was built for speed-up sign in to your admin pages.
 4. Choose the extracted folder
 
 ## Getting started
+![The Duplicator](https://image.ibb.co/bXcJy6/duplicate_tab.png)
+
 1. Click on The Duplicator icon on Chrome bar (yellow)
 2. Type your extra path for sign in
 3. Go on your site

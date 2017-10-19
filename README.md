@@ -1,11 +1,22 @@
-# chrome-extension-duplicate-tab
-### The chrome extension is opening a current tab on a new tab with adding **_admin_** to the url.
-**In order to use the extension:**
-1. Download the application and extract the [zip file](https://github.com/lunev/chrome-extension-duplicate-tab/archive/master.zip).   
+# Chrome extension "The Duplicator tab with adding extra path to your url"
+**That's enough duplicate tab for sign in.**
+The extension was built for speed-up sign in to your admin pages. 
+
+## Installing
+
+1. Download the application and extract the [zip file](https://github.com/lunev/chrome-extension-duplicate-login-tab/archive/master.zip) or clone [the repository](https://github.com/lunev/chrome-extension-duplicate-login-tab.git)  
+2. Extract the zip file
 1. Go to **_chrome://extensions_**
 2. Check **_Developer mode_**
 3. Click on **_Load unpacked extension_** button
 4. Choose the extracted folder
 
-Then you'll have the duplicate icon on your chrome bar.
-Next version will have options, like adding additional urls to the extension. So you'll have a choice what to add to the current url.
+## Getting started
+1. Click on The Duplicator icon on Chrome bar (yellow)
+2. Type your extra path for sign in
+3. Go on your site
+4. Click on The Duplicator icon and select the path from a list.
+
+## Authors
+
+* **Alex Lunev** - *Initial work* - [Alex Lunev](https://github.com/lunev)

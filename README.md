@@ -1,4 +1,4 @@
-# Chrome extension "The Duplicator tab with adding extra path to your url"
+# The Chrome extension "The Duplicator tab with adding extra path to your url"
 **That's enough duplicate tab for sign in.**
 The extension was built for speed-up sign in to your admin pages. 
 

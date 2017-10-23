@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-	const input = document.getElementById('input');
-	const list = document.getElementById('list');
-	const btn = document.getElementById('btn');
-	const form = document.getElementById('form');
-	let links = [];
+	let input = document.getElementById('input'),
+		list = document.getElementById('list'),
+		btn = document.getElementById('btn'),
+		form = document.getElementById('form'),
+		links = [];
 
 
 	let tablink;
@@ -12,13 +12,14 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 
 	(function init() {	
-		var htmlText = '';
+		let htmlText = '';
 		chrome.storage.local.get('channels', function(result){
 	        channels = result;
-		    for ( var key in result.channels ) {
-		    	if (JSON.stringify(result.channels[key]).replace(/['"]+/g, '') !== '') {
-		    		links.push(JSON.stringify(result.channels[key]).replace(/['"]+/g, ''));
-	            	htmlText += '<li data-value="'+ JSON.stringify(result.channels[key]).replace(/['"]+/g, '') + '"><a target="_blank" href="' + getDomain(tablink) + JSON.stringify(result.channels[key]).replace(/['"]+/g, '') + '">' + JSON.stringify(result.channels[key]).replace(/['"]+/g, '') + '</a><span class="clear" data-value="' + JSON.stringify(result.channels[key]).replace(/['"]+/g, '') + '"><span class="icon-clear">x</span></span></li>';
+		    for (var key in result.channels) {
+		    	let item = JSON.stringify(result.channels[key]).replace(/['"]+/g, '');
+		    	if (item !== '') {
+		    		links.push(item);
+	            	htmlText += '<li data-value="'+ item + '"><a class="link" target="_blank" href="' + getDomain(tablink) + item + '">' + item + '</a><span class="clear" data-value="' + item + '"><span class="icon-clear">x</span></span></li>';
 	        	}
 	        }
 	        list.innerHTML += htmlText;
@@ -26,14 +27,14 @@ document.addEventListener('DOMContentLoaded', function () {
 	})();
 
 	function getDomain(url){
-		var reg = '^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)';
+		let reg = '^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)';
 		return url.match(reg)[0];
 	}
 
 	function addUrl(e) {
 		if (input.value !== ''){
 			e.preventDefault();
-			list.innerHTML += '<li><a target="_blank" href="' + getDomain(tablink) + input.value + '">' + input.value + '</a><span class="clear" data-value="' + input.value + '"><span class="icon-clear">x</span></span></li>';
+			list.innerHTML += '<li data-value="'+ input.value + '"><a class="link" target="_blank" href="' + getDomain(tablink) + input.value + '">' + input.value + '</a><span class="clear" data-value="' + input.value + '"><span class="icon-clear">x</span></span></li>';
 			links.push(input.value);
 			chrome.storage.local.set({'channels': links});
 			input.value = '';
@@ -43,23 +44,27 @@ document.addEventListener('DOMContentLoaded', function () {
 	form.addEventListener('submit', addUrl);
 	btn.addEventListener('click', addUrl);
 
-	$('body').on('click', '.clear', function() {
-		var el = $(this);
-		chrome.storage.local.get('channels', function(result){
-	        channels = result;
-	        if ($.inArray( el.data('value'), result.channels >= 0)) {
-	        	el.data('value', result.channels).parent('li').remove();
-	        	var itemtoRemove = result.channels[$.inArray( el.data('value'), result.channels)];
-	        	result.channels.splice($.inArray(itemtoRemove, result.channels),1);
-	        }
-	        chrome.storage.local.set({'channels': result.channels});
-	    });	
+	document.body.addEventListener('click', function(e) {
+		if (e.target && e.target.className == 'icon-clear') {
+			var el = e.target;
+			chrome.storage.local.get('channels', function(result){
+		        channels = result;
+		        if (result.channels.indexOf(el.parentNode.parentNode.getAttribute('data-value')) >= 0 ) {
+		        	el.parentNode.parentNode.remove()
+
+		        	let itemtoRemove = result.channels.indexOf(el.parentNode.parentNode.getAttribute('data-value'));
+		        	result.channels.splice(itemtoRemove,1);
+		        }
+		        chrome.storage.local.set({'channels': result.channels});
+		    });	
+	    }
 	});
 
-	$('body').on('click', 'a', function(){
-		chrome.tabs.create({url: $(this).attr('href')});
-		return false;
+	document.body.addEventListener('click', function(e) {
+		if (e.target && e.target.nodeName == 'link') {
+			chrome.tabs.create({url: e.target.getAttribute('href')});
+			return false;
+	    }
 	});
 
-	
 });

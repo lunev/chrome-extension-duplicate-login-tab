@@ -4,7 +4,9 @@ The extension was built for speed-up sign in to your admin pages.
 
 ## Installing
 
-1. Download the extension [chrome-webstore](https://chrome.google.com/webstore/detail/the-duplicator/cmbkalfnmgbghjoghgcplcmcijbdijei) and extract the [zip file](https://github.com/lunev/chrome-extension-duplicate-login-tab/archive/master.zip) or clone [the repository](https://github.com/lunev/chrome-extension-duplicate-login-tab.git)  
+The extension is available now on [chrome-webstore](https://chrome.google.com/webstore/detail/the-duplicator/cmbkalfnmgbghjoghgcplcmcijbdijei).
+
+1. Download the extension [zip file](https://github.com/lunev/chrome-extension-duplicate-login-tab/archive/master.zip) or clone [the repository](https://github.com/lunev/chrome-extension-duplicate-login-tab.git)  
 2. Extract the zip file
 1. Go to **_chrome://extensions_**
 2. Check **_Developer mode_**

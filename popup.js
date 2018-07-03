@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	})();
 
 	function getDomain(url){
-		let reg = '^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)';
+		let reg;
+		/localhost/.test(url) ? reg = /(https?:\/\/.*):(\d*)/g : reg = '^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)';
 		return url.match(reg)[0];
 	}
 
